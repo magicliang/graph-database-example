@@ -1,3 +1,8 @@
+// 类似 maven 里面的 build 段
+
+/**
+ * 插件列表在最先
+ */
 plugins {
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
@@ -6,6 +11,7 @@ plugins {
 
 group = 'com.magicliang.data-intensive-application'
 version = '0.0.1-SNAPSHOT'
+// 一行指定兼容性
 sourceCompatibility = '1.8'
 
 configurations {
@@ -18,6 +24,9 @@ repositories {
 	mavenCentral()
 }
 
+/**
+ * 只提供坐标，不提供版本的依赖列表
+ */
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

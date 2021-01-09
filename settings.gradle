@@ -1,1 +1,2 @@
+// 类似 maven 里面的 parent 和 module 段
 rootProject.name = 'graph-database-application'

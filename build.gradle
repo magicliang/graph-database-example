@@ -4,17 +4,22 @@
  * 插件列表在最先
  */
 plugins {
+	// id 是 plugin 的一个方法
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
 	id 'java-library'
 }
 
-group = 'com.magicliang.data-intensive-application'
-version = '0.0.1-SNAPSHOT'
+allprojects {
+	group = 'com.magicliang.data-intensive-application'
+	version = '0.0.1-SNAPSHOT'
 
-// 一行指定兼容性
-sourceCompatibility = '1.8'
+	// 一行指定兼容性
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
+
+}
+
 
 configurations {
 	compileOnly {
@@ -31,7 +36,6 @@ repositories {
  */
 dependencies {
 	// 一般的依赖则使用 scope 别名来引用
-
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -39,20 +43,13 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 }
 
-test {
-	useJUnitPlatform()
-}
-
 // 指定插件作用于子项目
 subprojects {
-	// 插件使用 id 来引用
-	id 'org.springframework.boot' version '2.4.1'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
-	id 'java-library'
-
-	sourceCompatibility = 1.8
-	targetCompatibility = 1.8
+	// 插件 apply plugin，version 语法不一样
+	apply plugin: 'java'
+	apply plugin: 'java-library'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 
 	repositories {
 		mavenCentral()
@@ -62,4 +59,8 @@ subprojects {
 	test {
 		useJUnitPlatform()
 	}
+}
+
+bootJar {
+	enabled = false
 }

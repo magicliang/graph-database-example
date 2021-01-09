@@ -18,8 +18,21 @@ allprojects {
 	sourceCompatibility = '1.8'
 	targetCompatibility = '1.8'
 
-}
+	plugins.withType(JavaPlugin).whenPluginAdded {
+		dependencies {
+			constraints {
+				// 一般的依赖则使用 scope 别名来引用
+				compileOnly 'org.projectlombok:lombok'
+				annotationProcessor 'org.projectlombok:lombok'
+				testImplementation 'io.projectreactor:reactor-test'
 
+				testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//					exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+				}
+			}
+		}
+	}
+}
 
 configurations {
 	compileOnly {
@@ -35,12 +48,6 @@ repositories {
  * 只提供坐标，不提供版本的依赖列表
  */
 dependencies {
-	// 一般的依赖则使用 scope 别名来引用
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'io.projectreactor:reactor-test'
 }
 
 // 指定插件作用于子项目

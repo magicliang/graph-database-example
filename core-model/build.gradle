@@ -1,0 +1,16 @@
+dependencies {
+    api project(":common-util")
+    api project(":common-service-integration")
+    api project(":common-dal")
+}
+
+// bootJar 是一个任务，主要目的是生成可执行的 jar- 也就是启动 jar
+bootJar {
+    // 主模块
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+

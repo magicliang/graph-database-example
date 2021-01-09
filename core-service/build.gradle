@@ -1,0 +1,12 @@
+dependencies {
+    api project(":core-model")
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+

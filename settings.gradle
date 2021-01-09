@@ -1,2 +1,12 @@
 // 类似 maven 里面的 parent 和 module 段
 rootProject.name = 'graph-database-application'
+
+// 子模块列表
+include 'biz-shared'
+include 'biz-service-impl'
+include 'core-service'
+include 'core-model'
+include 'common-service-facade'
+include 'common-dal'
+include 'common-service-integration'
+include 'common-util'

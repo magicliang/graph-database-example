@@ -16,10 +16,14 @@ application
         -src
             - main
             -test
+        - settings.gradle
+        - build.gradle
     - module2
         -src
             - main
             -test
+        - settings.gradle
+        - build.gradle
     - settings.gradle
     - build.gradle
     - gradle.properties

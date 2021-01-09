@@ -1,0 +1,12 @@
+dependencies {
+    api project(":common-util")
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+

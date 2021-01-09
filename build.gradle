@@ -4,14 +4,15 @@
  * 插件列表在最先
  */
 plugins {
-	// 插件使用 id 来引用
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
+	id 'java-library'
 }
 
 group = 'com.magicliang.data-intensive-application'
 version = '0.0.1-SNAPSHOT'
+
 // 一行指定兼容性
 sourceCompatibility = '1.8'
 
@@ -40,4 +41,25 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+// 指定插件作用于子项目
+subprojects {
+	// 插件使用 id 来引用
+	id 'org.springframework.boot' version '2.4.1'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id 'java-library'
+
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
+
+	test {
+		useJUnitPlatform()
+	}
 }

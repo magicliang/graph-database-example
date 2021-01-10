@@ -5,6 +5,7 @@
  */
 plugins {
 	// id 是 plugin 的一个方法
+	id 'java'
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java-library'
@@ -22,13 +23,7 @@ allprojects {
 		dependencies {
 			constraints {
 				// 一般的依赖则使用 scope 别名来引用
-				compileOnly 'org.projectlombok:lombok'
-				annotationProcessor 'org.projectlombok:lombok'
-				testImplementation 'io.projectreactor:reactor-test'
-
-				testImplementation('org.springframework.boot:spring-boot-starter-test') {
-//					exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-				}
+//				compileOnly 'org.projectlombok:lombok'
 			}
 		}
 	}
@@ -48,6 +43,7 @@ repositories {
  * 只提供坐标，不提供版本的依赖列表
  */
 dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
 }
 
 // 指定插件作用于子项目
@@ -61,6 +57,19 @@ subprojects {
 	repositories {
 		mavenCentral()
 		jcenter()
+	}
+
+	dependencies {
+		// 一般的依赖则使用 scope 别名来引用
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'io.projectreactor:reactor-test'
+
+		implementation 'org.springframework.boot:spring-boot-starter-data-neo4j'
+
+		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//					exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
 	}
 
 	test {

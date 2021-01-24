@@ -58,7 +58,7 @@ subprojects {
 		mavenCentral()
 		jcenter()
 	}
-
+	// 标准地为子项目引入依赖的方式
 	dependencies {
 		// 一般的依赖则使用 scope 别名来引用
 		compileOnly 'org.projectlombok:lombok'
